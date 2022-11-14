@@ -49,8 +49,8 @@ function generateMarkdown(data) {
   const renderBadge=renderLicenseBadge(data.license);
   const renderSection=renderLicenseSection(data.license);
   return `
-  
-  # ${data.title}
+
+  # ${data.title} ${renderBadge}
   ${data.description}
   
 ---
@@ -98,7 +98,7 @@ ${renderSection}
 
 ---
   ## Tests
-    ${data.test}
+${data.test}
 
 ---
   ## Preguntas

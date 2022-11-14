@@ -46,9 +46,66 @@ function renderLicenseSection(license) {
 
 // TODO: Crear una función para generar un markdown para README
 function generateMarkdown(data) {
-  return `# ${data.title}
+  const renderBadge=renderLicenseBadge(data.license);
+  const renderSection=renderLicenseSection(data.license);
+  return `
+  
+  # ${data.title}
+  ${data.description}
+  
+---
+  ## Contents
+  1. [Instalación](#instalación)
+  2. [Uso](#uso)
+  3. [Licencia](#licencia)
+  4. [Contribución](#contribución)
+  5. [Tests](#tests)
+  6. [Preguntas](#preguntas)
+  
+---
+  ## Instalación
+${data.installation}
+
+URL para clonar repositorio:
+
+    ${data.repo}
+
+---
+  ## Uso
+${data.use}
+
+---
+  ## Licencia
+${renderSection}
+
+---
+  ## Contribución:
+    
+  Para contribuir con este proyecto:
+- Fork del repositorio.
+- Clonar el  repositorio.
+- Actualizar la rama master.
+
+        $git pull -r upstream master
+- Crear rama.
+
+        $ git checkout -b feature-nombre-rama
+- Realizar cambios, agregarlos, hacer commit y despues hacer push hacia nuestro repositorio indicando la rama que hemos creado.
+
+        $ git push origin feature-nombre-rama
+- Hacer un Pull Request.
+- Esperar que el codigo se acepte y se haga merge.
+
+---
+  ## Tests
+    ${data.test}
+
+---
+  ## Preguntas
+  * [GitHub profile](https://github.com/${data.user})
+  * Email: ${data.email} - Mandar correo electronico para una pronta respuesta.
 
 `;
 }
 
-module.exports = generateMarkdown;
+module.exports = {generateMarkdown};
